@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Sample 1</title>
+</head>
+
+<body>
+  <div class="display">
+    <input type="number" placeholder="enter number 1" id="valueOne">
+    <input type="number" placeholder="enter number 2" id="valueTwo">
+    <div class="button">
+      <button id="plus" onclick="calculateHandler('+')">+</button>
+      <button id="minus" onclick="calculateHandler('-')">-</button>
+      <button id="mult" onclick="calculateHandler('x')">x</button>
+      <button id="divide" onclick="calculateHandler('/')">/</button>
+      <button id='clear'>Reset</button>
+    </div>
+
+    <div id="result"></div>
+  </div>
+</body>
+<script>
+  const plus = document.querySelector('#plus')
+  const minus = document.querySelector('#minus')
+  const mult = document.querySelector('#mult')
+  const divide = document.querySelector('#divide')
+  const result = document.querySelector('#result');
+  const valueOne = document.querySelector('#valueOne')
+  const clear = document.querySelector('#clear')
+  const valueTwo = document.querySelector('#valueTwo')
+
+  result.textContent = 'Your result would appear here'
+
+
+
+
+
+  const calculateHandler = (op) => {
+    if (op === '+') {
+      result.textContent = parseInt(valueOne.value, 10) + parseInt(valueTwo.value, 10);
+
+    } else if (op === '-') {
+      result.textContent = parseInt(valueOne.value, 10) - parseInt(valueTwo.value, 10);
+    } else if (op === 'x') {
+      result.textContent = parseInt(valueOne.value, 10) * parseInt(valueTwo.value, 10);
+    } else {
+      result.textContent = parseInt(valueOne.value, 10) / parseInt(valueTwo.value, 10);
+    }
+  }
+  const eventHandler = () => {
+    if (valueOne.value === '' || valueTwo.value === '') {
+      result.textContent = 'please enter both the values'
+    }
+  }
+  const clearHandler = () => {
+    valueOne.value = '';
+    valueTwo.value = '';
+    result.textContent = 'Your result would appear here'
+  }
+
+  plus.addEventListener('click', eventHandler)
+  minus.addEventListener('click', eventHandler)
+  mult.addEventListener('click', eventHandler)
+  divide.addEventListener('click', eventHandler)
+  clear.addEventListener('click', clearHandler)
+
+
+</script>
+
+</html>
